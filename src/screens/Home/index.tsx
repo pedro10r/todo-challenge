@@ -22,8 +22,8 @@ import {
 
 import { Task } from "../../components/Task";
 
-import LogoSvg from '../assets/logo.svg';
-import ClipboardSvg from '../assets/clipboard.svg';
+import LogoSvg from '../../assets/logo.svg';
+import ClipboardSvg from '../../assets/clipboard.svg';
 
 import { useState } from "react";
 
