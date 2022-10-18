@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Alert, FlatList } from "react-native";
+import { useTheme } from "styled-components";
 
 import {
   Body,
@@ -25,11 +27,12 @@ import { Task } from "../../components/Task";
 import LogoSvg from '../../assets/logo.svg';
 import ClipboardSvg from '../../assets/clipboard.svg';
 
-import { useState } from "react";
-
 export function Home(){
   const [ task, setTask ] = useState<string[]>([]);
   const [ taskDescription, setTaskDescription ] = useState('');
+  const [ completedCount, setCompletedCount ] = useState<number>(0);
+
+  const theme = useTheme();
 
   function handleAddTask() {
     setTask(prevState => [...prevState, taskDescription]);
@@ -59,7 +62,7 @@ export function Home(){
         <Form>
           <Input
             placeholder="Adicione uma nova tarefa"
-            placeholderTextColor="#808080"
+            placeholderTextColor={theme["gray-300"]}
             onChangeText={setTaskDescription}
             value={taskDescription}
           />
@@ -84,7 +87,7 @@ export function Home(){
             <Completed>Concluídas</Completed>
 
             <NumberArea>
-              <Number>2</Number>
+              <Number>{completedCount}</Number>
             </NumberArea>
           </CounterAction>
         </MarkArea>
@@ -100,6 +103,7 @@ export function Home(){
               key={item}
               description={item}
               onRemove={() => handleRemoveTask(item)}
+              setCountCompleted={setCompletedCount}
             />
           )}
           ListEmptyComponent={() => (
