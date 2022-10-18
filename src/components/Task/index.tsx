@@ -37,11 +37,8 @@ export function Task({ description, onRemove, setCountCompleted }: Props) {
           />
         </Pressable>
 
-        {onSelect ? (
-          <DescriptionCompleted>{description}</DescriptionCompleted>)
-        : (
-          <Description>{description}</Description>
-          )
+        {onSelect ?
+          <DescriptionCompleted>{description}</DescriptionCompleted> : <Description>{description}</Description>
         }
 
         <Pressable
